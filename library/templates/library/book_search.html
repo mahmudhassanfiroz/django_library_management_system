@@ -1,0 +1,41 @@
+
+<h1> Book Search </h1>
+<form action="{% url 'library:book_search' %}" method="GET">
+    <input type="text" name="query" placeholder="Search by Title, Author, or ISBN">
+    <input type="Submit" value="Search">
+
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Publication Date</th>
+            <th>Availability</th>
+            <th>No. of Books Avilable</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.genre}}</td>
+            <td>{{ book.availability}}</td>
+            <td>{{book.num_available_books}}</td>
+            <td>
+                {% if book.availability %}
+                <a href="{% url 'library:book_reservation' book.id %}">Reserve</a>
+                {% else %}
+                <a href="{% url 'library:book_unreserve' book.id %}">Unreserve</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>

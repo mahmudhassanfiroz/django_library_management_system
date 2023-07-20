@@ -1,0 +1,26 @@
+
+
+<h1> Book Catalog </h1>
+<table>
+    <tr>
+        <th> Title </th>
+        <th> Author </th>
+        <th> ISBN </th>
+        <th> Publication Date </th>
+        <th> Genre </th>
+        <th> Availability </th>
+        <th> No. of Books Avilable </th>
+    </tr>
+    {% for book in Books %}
+    <tr>
+        <td> {{ book.title }} </td>
+        <td> {{ book.author }} </td>
+        <td> {{ book.isbn }} </td>
+        <td> {{ book.publication_date }} </td>
+        <td> {{ book.genre }} </td>
+        <td> {{ book.availability }} </td>
+        <td> {{ book.num_available_books }} </td>
+    </tr>
+    {% endfor %}
+
+</table>

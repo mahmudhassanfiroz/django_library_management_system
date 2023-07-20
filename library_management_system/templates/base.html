@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management System</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Library Management System</h1>
+        <nav>
+            <ul>
+                <!-- Home link -->
+                <li><a href="{% url 'home' %}">Home</a></li>
+
+                <!-- User Authentication links -->
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+
+                <!-- Book Catalog link -->
+                <li><a href="{% url 'book_catalog' %}">Book Catalog</a></li>
+
+                <!-- Wishlist link -->
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <main>
+        {% block content %}
+        <!-- Content specific to each page will go here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Add footer content here -->
+        <p>&copy; Library Management System 2023</p>
+    </footer>
+</body>
+</html>
